@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void GetMatrix(int value[], int *row, int *col) {
+void GetMatrix(int rawPtr[], int *rows, int *cols) {
     int r, c;
-    scanf("%d %d", &r, &c); //รับค่า
+    scanf("%d %d", &r, &c);
 
-    int compile = r * c;
-    int *matrixBox = (int*)malloc(compile * sizeof(int));
+    int total = r * c;
+    int *matrixBox = (int*)malloc(total * sizeof(int));
 
-    for (int i = 0; i < compile; i++) {
+    for (int i = 0; i < total; i++) {
         scanf("%d", &matrixBox[i]);
     }
 
-    *((int **)value) = matrixBox;
-    *row = r;
-    *col = c;
+    *((int **)rawPtr) = matrixBox;
+    *rows = r;
+    *cols = c;
 }
 
 int main() {
