@@ -1,31 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int* GetSet( int *n )
-{
-    static int set[100] ;   // ขนาดสูงสุด 100 ตัว (ปรับได้)
-    int i ;
+void GetSet(int a[], int *x) {
+    int box;
+    scanf("%d", &box);
 
-    printf( "Enter Number : " ) ;
-    scanf( "%d", n ) ;
-
-    for( i = 0; i < *n; i++ ) {
-        printf( "Number [%d] : ", i+1 ) ;
-        scanf( "%d", &set[i] ) ;
+    int *storage = (int *)malloc(box * sizeof(int));
+    for (int slot = 0; slot < box; slot++) {
+        scanf("%d", &storage[slot]);
     }
 
-    return set ;
+    *(int **)a = storage;
+    *x = box;
 }
 
-int main()
-{
-    int *data, num, i ;
-
-    data = GetSet( &num ) ;
-
-    printf( "\nNumber: " ) ;
-    for( i = 0 ; i < num ; i++ ) {
-        printf( "[%d]", data[i] ) ;
-    }
-
-    return 0 ;
+int main() {
+    int *data, num;
+    GetSet((int *)&data, &num);
+    return 0;
 }
